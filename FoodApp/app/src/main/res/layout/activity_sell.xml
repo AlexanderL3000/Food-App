@@ -4,20 +4,23 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".SellActivity2">
+    tools:context=".SellActivity">
 
     <TextView
         android:id="@+id/PageTitleSell"
         android:layout_width="167dp"
         android:layout_height="64dp"
+        android:layout_marginTop="24dp"
+        android:layout_marginBottom="52dp"
         android:fontFamily="@font/carrois_gothic_sc"
         android:text="Sell"
         android:textColor="#BE4444"
         android:textSize="62sp"
+        app:layout_constraintBottom_toTopOf="@+id/SellTitleInput"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.122"
+        app:layout_constraintHorizontal_bias="0.11"
         app:layout_constraintStart_toStartOf="parent"
-        tools:layout_editor_absoluteY="25dp" />
+        app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
         android:id="@+id/SellTitle"
@@ -30,13 +33,16 @@
         android:textSize="18sp"
         app:layout_constraintBottom_toTopOf="@+id/SellTitleInput"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.081"
-        app:layout_constraintStart_toStartOf="parent" />
+        app:layout_constraintHorizontal_bias="0.073"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="1.0" />
 
     <EditText
         android:id="@+id/SellTitleInput"
         android:layout_width="356dp"
         android:layout_height="38dp"
+        android:layout_marginTop="140dp"
         android:background="@drawable/roundstyle"
         android:backgroundTint="#F8FAFC"
         android:ems="10"
@@ -46,9 +52,9 @@
         android:radius="100dp"
         android:singleLine="true"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.49"
+        app:layout_constraintHorizontal_bias="0.454"
         app:layout_constraintStart_toStartOf="parent"
-        tools:layout_editor_absoluteY="144dp" />
+        app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
         android:id="@+id/SellPrice"
@@ -61,13 +67,16 @@
         android:textSize="18sp"
         app:layout_constraintBottom_toTopOf="@+id/SellPriceInput"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.074"
-        app:layout_constraintStart_toStartOf="parent" />
+        app:layout_constraintHorizontal_bias="0.068"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.994" />
 
     <EditText
         android:id="@+id/SellPriceInput"
         android:layout_width="165dp"
         android:layout_height="36dp"
+        android:layout_marginTop="224dp"
         android:background="@drawable/roundstyle"
         android:backgroundTint="#F8FAFC"
         android:ems="10"
@@ -79,7 +88,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.101"
         app:layout_constraintStart_toStartOf="parent"
-        tools:layout_editor_absoluteY="226dp" />
+        app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
         android:id="@+id/SellQuantity"
@@ -92,13 +101,16 @@
         android:textSize="18sp"
         app:layout_constraintBottom_toTopOf="@+id/SellQuantityInput"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.678"
-        app:layout_constraintStart_toStartOf="parent" />
+        app:layout_constraintHorizontal_bias="0.666"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.989" />
 
     <EditText
         android:id="@+id/SellQuantityInput"
         android:layout_width="165dp"
         android:layout_height="36dp"
+        android:layout_marginTop="224dp"
         android:background="@drawable/roundstyle"
         android:backgroundTint="#F8FAFC"
         android:ems="10"
@@ -108,9 +120,9 @@
         android:radius="100dp"
         android:singleLine="true"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.892"
+        app:layout_constraintHorizontal_bias="0.878"
         app:layout_constraintStart_toStartOf="parent"
-        tools:layout_editor_absoluteY="226dp" />
+        app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
         android:id="@+id/SellDescription"
@@ -130,6 +142,7 @@
         android:id="@+id/SellDescriptionInput"
         android:layout_width="356dp"
         android:layout_height="38dp"
+        android:layout_marginTop="308dp"
         android:background="@drawable/roundstyle"
         android:backgroundTint="#F8FAFC"
         android:ems="10"
@@ -141,5 +154,5 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.454"
         app:layout_constraintStart_toStartOf="parent"
-        tools:layout_editor_absoluteY="307dp" />
+        app:layout_constraintTop_toTopOf="parent" />
 </androidx.constraintlayout.widget.ConstraintLayout>

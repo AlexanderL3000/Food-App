@@ -10,7 +10,10 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.FoodApp">
         <activity
-            android:name=".SellActivity2"
+            android:name=".MainActivity2"
+            android:exported="false" />
+        <activity
+            android:name=".SellActivity"
             android:exported="false" />
         <activity
             android:name=".MainActivity"

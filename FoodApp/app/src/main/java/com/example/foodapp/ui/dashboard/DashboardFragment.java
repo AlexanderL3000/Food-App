@@ -1,9 +1,11 @@
 package com.example.foodapp.ui.dashboard;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
@@ -12,11 +14,13 @@ import androidx.fragment.app.Fragment;
 import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProvider;
 
+import com.example.foodapp.MainActivity;
 import com.example.foodapp.R;
+import com.example.foodapp.SellActivity;
 import com.example.foodapp.databinding.FragmentDashboardBinding;
 
 public class DashboardFragment extends Fragment {
-
+    private Button sell;
     private DashboardViewModel dashboardViewModel;
     private FragmentDashboardBinding binding;
 
@@ -35,7 +39,26 @@ public class DashboardFragment extends Fragment {
                 textView.setText(s);
             }
         });
+
+        // Example button to lead to sell page
+        sell = (Button) binding.SellButton;
+        sell.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                openSellActivity();
+            }
+        });
+
         return root;
+
+
+    }
+
+    // Example function for opening activity
+    public void openSellActivity() {
+        Intent intent = new Intent(DashboardFragment.this.getActivity(), SellActivity.class);
+        startActivity(intent);
+
     }
 
     @Override

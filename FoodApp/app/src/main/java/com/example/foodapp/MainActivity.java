@@ -1,5 +1,6 @@
 package com.example.foodapp;
 
+import android.content.Intent;
 import android.os.Bundle;
 
 import com.google.android.material.bottomnavigation.BottomNavigationView;
@@ -14,7 +15,7 @@ import com.example.foodapp.databinding.ActivityMainBinding;
 
 public class MainActivity extends AppCompatActivity {
 
-
+    boolean signedIn = false;
 
     private ActivityMainBinding binding;
 
@@ -22,6 +23,10 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
+        if (!signedIn) {
+            Intent intent = new Intent(this, Login.class);
+            startActivity(intent);
+        }
 
         binding = ActivityMainBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());

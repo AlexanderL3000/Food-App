@@ -101,7 +101,7 @@
         app:layout_constraintTop_toBottomOf="@+id/RegisterPasswordText" />
 
     <TextView
-        android:id="@+id/RegisterUsernameText"
+        android:id="@+id/RegisterEmailText"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="280dp"
@@ -129,10 +129,10 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.418"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/RegisterUsernameText" />
+        app:layout_constraintTop_toBottomOf="@+id/RegisterEmailText" />
 
     <Button
-        android:id="@+id/ResgisterCreateBtn"
+        android:id="@+id/RegisterCreateBtn"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="36dp"

@@ -2,6 +2,7 @@ package com.example.foodapp;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.widget.Toast;
 
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 
@@ -12,21 +13,24 @@ import androidx.navigation.ui.AppBarConfiguration;
 import androidx.navigation.ui.NavigationUI;
 
 import com.example.foodapp.databinding.ActivityMainBinding;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
 
 public class MainActivity extends AppCompatActivity {
 
     boolean signedIn = false;
-
+    private FirebaseAuth mAuth;
     private ActivityMainBinding binding;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        mAuth = FirebaseAuth.getInstance();
 
-        if (!signedIn) {
+        /*if (mAuth.getCurrentUser() == null) {
             Intent intent = new Intent(this, Login.class);
             startActivity(intent);
-        }
+        }*/
 
         binding = ActivityMainBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
@@ -47,4 +51,17 @@ public class MainActivity extends AppCompatActivity {
 
     }
 
+    @Override
+    protected void onStart() {
+        super.onStart();
+        FirebaseUser curUser = mAuth.getCurrentUser();
+        if (curUser==null) {
+            Intent intent = new Intent(this, Login.class);
+            startActivity(intent);
+            finish();
+        }else{
+            String email = curUser.getEmail();
+            Toast.makeText(MainActivity.this, email, Toast.LENGTH_LONG).show();
+        }
+    }
 }

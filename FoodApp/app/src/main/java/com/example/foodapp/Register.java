@@ -28,7 +28,7 @@ public class Register extends AppCompatActivity implements View.OnClickListener 
 
         editFirstName = (EditText) findViewById(R.id.RegisterFirstNameInput);
         editLastName = (EditText) findViewById(R.id.RegisterLastNameInput);
-        editEmail = (EditText) findViewById(R.id.UsernameInput);
+        editEmail = (EditText) findViewById(R.id.EmailInput);
         editPassword = (EditText) findViewById(R.id.RegisterPasswordInput);
 
         submit = (Button) findViewById(R.id.RegisterCreateBtn);

@@ -2,7 +2,7 @@ package com.example.foodapp;
 
 public class User {
 
-    public String firstName, lastName, age, email;
+    public String firstName, lastName, email;
     public User() {
 
     }

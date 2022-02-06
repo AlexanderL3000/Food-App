@@ -6,6 +6,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.ListView;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
@@ -19,10 +20,15 @@ import com.example.foodapp.R;
 import com.example.foodapp.SellActivity;
 import com.example.foodapp.databinding.FragmentDashboardBinding;
 
+import java.util.Objects;
+
 public class DashboardFragment extends Fragment {
     private Button sell;
     private DashboardViewModel dashboardViewModel;
     private FragmentDashboardBinding binding;
+    String[] titleList = {"Apple", "Orange", "Pasta", "BBT"};
+    ListView listView;
+
 
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
@@ -48,6 +54,11 @@ public class DashboardFragment extends Fragment {
                 openSellActivity();
             }
         });
+
+        listView = (ListView) binding.customListView;
+        CustomBaseAdapter customBaseAdapter = new CustomBaseAdapter(requireActivity().getApplicationContext(), titleList);
+        listView.setAdapter(customBaseAdapter);
+
 
         return root;
 

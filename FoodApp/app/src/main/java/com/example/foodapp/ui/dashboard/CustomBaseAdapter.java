@@ -9,13 +9,16 @@ import android.widget.TextView;
 
 import com.example.foodapp.R;
 
+import java.util.ArrayList;
+
 public class CustomBaseAdapter extends BaseAdapter {
 
     Context context;
-    String[] titleList;
+    /**String[] titleList;*/
     LayoutInflater inflater;
+    ArrayList<String> titleList;
 
-    public CustomBaseAdapter(Context ctx, String [] titleList) {
+    public CustomBaseAdapter(Context ctx, ArrayList<String> titleList) {
         this.context = ctx;
         this.titleList = titleList;
         inflater = (LayoutInflater.from(ctx));
@@ -25,7 +28,7 @@ public class CustomBaseAdapter extends BaseAdapter {
 
     @Override
     public int getCount() {
-        return titleList.length;
+        return titleList.size();
 
     }
 
@@ -45,7 +48,7 @@ public class CustomBaseAdapter extends BaseAdapter {
         TextView item1 = (TextView) view.findViewById(R.id.listPriceText);
 
 
-        item1.setText(titleList[i]);
+        item1.setText(titleList.get(i));
 
         return view;
     }

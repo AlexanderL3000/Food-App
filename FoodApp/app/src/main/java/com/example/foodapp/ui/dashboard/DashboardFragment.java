@@ -2,12 +2,14 @@ package com.example.foodapp.ui.dashboard;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.renderscript.Sampler;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.ListView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -15,18 +17,26 @@ import androidx.fragment.app.Fragment;
 import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProvider;
 
+import com.example.foodapp.Login;
 import com.example.foodapp.MainActivity;
 import com.example.foodapp.R;
 import com.example.foodapp.SellActivity;
+import com.example.foodapp.SellItem;
 import com.example.foodapp.databinding.FragmentDashboardBinding;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 
+import java.util.ArrayList;
 import java.util.Objects;
 
 public class DashboardFragment extends Fragment {
     private Button sell;
     private DashboardViewModel dashboardViewModel;
     private FragmentDashboardBinding binding;
-    String[] titleList = {"Apple", "Orange", "Pasta", "BBT"};
+    /**String[] titleList*/;
     ListView listView;
 
 
@@ -55,10 +65,34 @@ public class DashboardFragment extends Fragment {
             }
         });
 
+        String test;
+        final ArrayList<String> titleList = new ArrayList<>();
+        final FirebaseDatabase database = FirebaseDatabase.getInstance();
+        DatabaseReference reference = database.getReference("server/saving-data/fireblog/SellItems");
+
+
+
+
         listView = (ListView) binding.customListView;
         CustomBaseAdapter customBaseAdapter = new CustomBaseAdapter(requireActivity().getApplicationContext(), titleList);
         listView.setAdapter(customBaseAdapter);
 
+        reference.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot snapshot) {
+                for (DataSnapshot dataSnapshot : snapshot.getChildren()) {
+                    SellItem item = dataSnapshot.getValue(SellItem.class);
+                    titleList.add(item.title);
+                }
+                customBaseAdapter.notifyDataSetChanged();
+
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+
+            }
+        });
 
         return root;
 

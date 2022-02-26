@@ -67,6 +67,7 @@ public class DashboardFragment extends Fragment {
 
         String test;
         final ArrayList<String> titleList = new ArrayList<>();
+        final ArrayList<String> titleList2 = new ArrayList<>();
         final FirebaseDatabase database = FirebaseDatabase.getInstance();
         DatabaseReference reference = database.getReference("server/saving-data/fireblog/SellItems");
 
@@ -74,15 +75,23 @@ public class DashboardFragment extends Fragment {
 
 
         listView = (ListView) binding.customListView;
-        CustomBaseAdapter customBaseAdapter = new CustomBaseAdapter(requireActivity().getApplicationContext(), titleList);
+        CustomBaseAdapter customBaseAdapter = new CustomBaseAdapter(requireActivity().getApplicationContext(), titleList, titleList2);
         listView.setAdapter(customBaseAdapter);
 
         reference.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
+                int counter = 0;
                 for (DataSnapshot dataSnapshot : snapshot.getChildren()) {
                     SellItem item = dataSnapshot.getValue(SellItem.class);
-                    titleList.add(item.title);
+                    if ((counter % 2) == 0) {
+                        titleList.add(item.title);
+                        counter = counter + 1;
+                    }
+                    else{
+                        titleList2.add(item.title);
+                        counter = counter + 1;
+                    }
                 }
                 customBaseAdapter.notifyDataSetChanged();
 

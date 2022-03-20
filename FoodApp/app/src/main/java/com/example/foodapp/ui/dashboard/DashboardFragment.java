@@ -1,11 +1,15 @@
 package com.example.foodapp.ui.dashboard;
 
+import android.app.Dialog;
 import android.content.Intent;
+import android.graphics.Color;
+import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
 import android.renderscript.Sampler;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
 import android.widget.Button;
 import android.widget.ListView;
 import android.widget.TextView;
@@ -36,8 +40,10 @@ public class DashboardFragment extends Fragment {
     private Button sell;
     private DashboardViewModel dashboardViewModel;
     private FragmentDashboardBinding binding;
+
     /**String[] titleList*/;
     ListView listView;
+    Dialog mDialog;
 
 
     public View onCreateView(@NonNull LayoutInflater inflater,
@@ -75,9 +81,18 @@ public class DashboardFragment extends Fragment {
 
 
         listView = (ListView) binding.customListView;
-        CustomBaseAdapter customBaseAdapter = new CustomBaseAdapter(requireActivity().getApplicationContext(), titleList, titleList2);
+        CustomBaseAdapter customBaseAdapter = new CustomBaseAdapter(requireActivity().getApplicationContext(),getActivity(), titleList, titleList2);
         listView.setAdapter(customBaseAdapter);
-
+        listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
+                Toast.makeText(getActivity(), "adfsdsf", Toast.LENGTH_SHORT).show();
+                mDialog = new Dialog(getContext());
+                mDialog.setContentView(R.layout.buy_popup);
+                mDialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
+                mDialog.show();
+            }
+        });
         reference.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
@@ -102,6 +117,7 @@ public class DashboardFragment extends Fragment {
 
             }
         });
+
 
         return root;
 

@@ -26,13 +26,18 @@ public class CustomBaseAdapter extends BaseAdapter {
     LayoutInflater inflater;
     ArrayList<String> titleList;
     ArrayList<String> titleList2;
+    ArrayList<String> desc;
+    ArrayList<String> desc2;
     Dialog mDialog;
 
-    public CustomBaseAdapter(Context ctx, Context Actx, ArrayList<String> titleList, ArrayList<String> titleList2) {
+
+    public CustomBaseAdapter(Context ctx, Context Actx, ArrayList<String> titleList, ArrayList<String> titleList2, ArrayList<String> description, ArrayList<String> description2) {
         this.context = ctx;
         this.contextA = Actx;
         this.titleList2 = titleList2;
         this.titleList = titleList;
+        this.desc = description;
+        this.desc2 = description2;
         inflater = (LayoutInflater.from(ctx));
 
     }
@@ -59,11 +64,13 @@ public class CustomBaseAdapter extends BaseAdapter {
         view = inflater.inflate(R.layout.listitem, null);
         TextView item1 = (TextView) view.findViewById(R.id.listPriceText);
         TextView item2 = (TextView) view.findViewById(R.id.listPriceText2);
+
         ImageButton ib1 = (ImageButton) view.findViewById(R.id.imageButton1);
         ImageButton ib2 = (ImageButton) view.findViewById(R.id.imageButton2);
 
         if (i < titleList.size()) {
             item1.setText(titleList.get(i));
+            String descr = desc.get(i);
             ib1.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
@@ -75,6 +82,10 @@ public class CustomBaseAdapter extends BaseAdapter {
                     mDialog.setContentView(R.layout.buy_popup);
                     mDialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
                     mDialog.getWindow().setLayout(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.WRAP_CONTENT);
+                    TextView description = (TextView) mDialog.findViewById(R.id.popupDescription);
+                    TextView title = (TextView) mDialog.findViewById(R.id.popupTitle);
+                    description.setText(descr);
+                    title.setText(titleList.get(i));
                     mDialog.show();
 
 
@@ -86,6 +97,7 @@ public class CustomBaseAdapter extends BaseAdapter {
 
         if (i < titleList2.size()) {
             item2.setText(titleList2.get(i));
+            String descr = desc2.get(i);
             ib2.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
@@ -94,6 +106,10 @@ public class CustomBaseAdapter extends BaseAdapter {
                     mDialog.setContentView(R.layout.buy_popup);
                     mDialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
                     mDialog.getWindow().setLayout(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.WRAP_CONTENT);
+                    TextView description = (TextView) mDialog.findViewById(R.id.popupDescription);
+                    TextView title = (TextView) mDialog.findViewById(R.id.popupTitle);
+                    description.setText(descr);
+                    title.setText(titleList2.get(i));
                     mDialog.show();
                 }
             });

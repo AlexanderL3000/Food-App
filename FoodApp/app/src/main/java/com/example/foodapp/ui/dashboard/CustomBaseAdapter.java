@@ -28,6 +28,7 @@ public class CustomBaseAdapter extends BaseAdapter {
     ArrayList<String> titleList2;
     ArrayList<String> desc;
     ArrayList<String> desc2;
+
     Dialog mDialog;
 
 

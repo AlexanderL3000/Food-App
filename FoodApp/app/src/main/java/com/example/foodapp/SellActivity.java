@@ -50,6 +50,7 @@ public class SellActivity extends AppCompatActivity implements View.OnClickListe
     private DatabaseReference mDatabase;
     final FirebaseDatabase database = FirebaseDatabase.getInstance();
     DatabaseReference ref = database.getReference("server/saving-data/fireblog");
+    private String hi;
 
     ImageButton uploadPic;
 

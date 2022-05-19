@@ -3,6 +3,7 @@ package com.example.foodapp.ui.dashboard;
 import android.app.Dialog;
 import android.content.Context;
 import android.content.Intent;
+import android.graphics.BitmapFactory;
 import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
 import android.view.LayoutInflater;
@@ -12,7 +13,9 @@ import android.widget.BaseAdapter;
 import android.widget.ImageButton;
 import android.widget.TextView;
 import android.widget.Toast;
+import android.net.Uri;
 
+import com.bumptech.glide.Glide;
 import com.example.foodapp.MainActivity;
 import com.example.foodapp.R;
 import com.example.foodapp.SellActivity;
@@ -28,17 +31,23 @@ public class CustomBaseAdapter extends BaseAdapter {
     ArrayList<String> titleList2;
     ArrayList<String> desc;
     ArrayList<String> desc2;
+    ArrayList<String> url1;
+    ArrayList<String> url2;
 
     Dialog mDialog;
 
 
-    public CustomBaseAdapter(Context ctx, Context Actx, ArrayList<String> titleList, ArrayList<String> titleList2, ArrayList<String> description, ArrayList<String> description2) {
+    public CustomBaseAdapter(Context ctx, Context Actx, ArrayList<String> titleList, ArrayList<String> titleList2,
+                             ArrayList<String> description, ArrayList<String> description2, ArrayList<String> url1,
+                                     ArrayList<String> url2) {
         this.context = ctx;
         this.contextA = Actx;
         this.titleList2 = titleList2;
         this.titleList = titleList;
         this.desc = description;
         this.desc2 = description2;
+        this.url1 = url1;
+        this.url2 = url2;
         inflater = (LayoutInflater.from(ctx));
 
     }
@@ -72,6 +81,8 @@ public class CustomBaseAdapter extends BaseAdapter {
         if (i < titleList.size()) {
             item1.setText(titleList.get(i));
             String descr = desc.get(i);
+
+            Glide.with(contextA).load(url1.get(i)).into(ib1);
             ib1.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
@@ -99,6 +110,7 @@ public class CustomBaseAdapter extends BaseAdapter {
         if (i < titleList2.size()) {
             item2.setText(titleList2.get(i));
             String descr = desc2.get(i);
+            Glide.with(contextA).load(url1.get(i)).into(ib2);
             ib2.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {

@@ -76,6 +76,8 @@ public class DashboardFragment extends Fragment {
         final ArrayList<String> titleList2 = new ArrayList<>();
         final ArrayList<String> desc = new ArrayList<>();
         final ArrayList<String> desc2 = new ArrayList<>();
+        final ArrayList<String> url1 = new ArrayList<>();
+        final ArrayList<String> url2 = new ArrayList<>();
         final FirebaseDatabase database = FirebaseDatabase.getInstance();
         DatabaseReference reference = database.getReference("server/saving-data/fireblog/SellItems");
 
@@ -83,7 +85,7 @@ public class DashboardFragment extends Fragment {
 
 
         listView = (ListView) binding.customListView;
-        CustomBaseAdapter customBaseAdapter = new CustomBaseAdapter(requireActivity().getApplicationContext(),getActivity(), titleList, titleList2, desc, desc2);
+        CustomBaseAdapter customBaseAdapter = new CustomBaseAdapter(requireActivity().getApplicationContext(),getActivity(), titleList, titleList2, desc, desc2, url1, url2);
         listView.setAdapter(customBaseAdapter);
         listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
@@ -104,11 +106,13 @@ public class DashboardFragment extends Fragment {
                     if ((counter % 2) == 0) {
                         titleList.add(item.title);
                         desc.add(item.description);
+                        url1.add(item.imageUrl);
                         counter = counter + 1;
                     }
                     else{
                         titleList2.add(item.title);
                         desc2.add(item.description);
+                        url2.add(item.imageUrl);
                         counter = counter + 1;
                     }
                 }

@@ -58,7 +58,7 @@ public class DashboardFragment extends Fragment {
         dashboardViewModel.getText().observe(getViewLifecycleOwner(), new Observer<String>() {
             @Override
             public void onChanged(@Nullable String s) {
-                textView.setText(s);
+                //textView.setText(s);
             }
         });
 
@@ -86,6 +86,7 @@ public class DashboardFragment extends Fragment {
 
         listView = (ListView) binding.customListView;
         CustomBaseAdapter customBaseAdapter = new CustomBaseAdapter(requireActivity().getApplicationContext(),getActivity(), titleList, titleList2, desc, desc2, url1, url2);
+
         listView.setAdapter(customBaseAdapter);
         listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override

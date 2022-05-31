@@ -2,8 +2,6 @@ package com.example.foodapp.ui.dashboard;
 
 import android.app.Dialog;
 import android.content.Context;
-import android.content.Intent;
-import android.graphics.BitmapFactory;
 import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
 import android.view.LayoutInflater;
@@ -11,14 +9,12 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 import android.widget.ImageButton;
+import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
-import android.net.Uri;
 
 import com.bumptech.glide.Glide;
-import com.example.foodapp.MainActivity;
 import com.example.foodapp.R;
-import com.example.foodapp.SellActivity;
 
 import java.util.ArrayList;
 
@@ -82,6 +78,7 @@ public class CustomBaseAdapter extends BaseAdapter {
             item1.setText(titleList.get(i));
             String descr = desc.get(i);
 
+
             Glide.with(contextA).load(url1.get(i)).into(ib1);
             ib1.setOnClickListener(new View.OnClickListener() {
                 @Override
@@ -96,8 +93,11 @@ public class CustomBaseAdapter extends BaseAdapter {
                     mDialog.getWindow().setLayout(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.WRAP_CONTENT);
                     TextView description = (TextView) mDialog.findViewById(R.id.popupDescription);
                     TextView title = (TextView) mDialog.findViewById(R.id.popupTitle);
+                    ImageView image = (ImageView) mDialog.findViewById(R.id.buyImage);
+
                     description.setText(descr);
                     title.setText(titleList.get(i));
+                    Glide.with(contextA).load(url1.get(i)).into(image);
                     mDialog.show();
 
 
@@ -121,8 +121,11 @@ public class CustomBaseAdapter extends BaseAdapter {
                     mDialog.getWindow().setLayout(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.WRAP_CONTENT);
                     TextView description = (TextView) mDialog.findViewById(R.id.popupDescription);
                     TextView title = (TextView) mDialog.findViewById(R.id.popupTitle);
+                    ImageView image = (ImageView) mDialog.findViewById(R.id.buyImage);
+
                     description.setText(descr);
                     title.setText(titleList2.get(i));
+                    Glide.with(contextA).load(url1.get(i)).into(image);
                     mDialog.show();
                 }
             });

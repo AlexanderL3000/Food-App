@@ -24,6 +24,7 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <ImageView
+        android:id="@+id/buyImage"
         android:layout_width="300dp"
         android:layout_height="120dp"
         android:layout_alignParentStart="true"

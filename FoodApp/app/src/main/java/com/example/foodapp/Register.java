@@ -48,6 +48,9 @@ public class Register extends AppCompatActivity implements View.OnClickListener 
         String lastName = editLastName.getText().toString().trim();
         String email = editEmail.getText().toString().trim();
         String password = editPassword.getText().toString().trim();
+        String Insta = "@";
+        String WeChat = "@";
+
 
         if (firstName.isEmpty()) {
             editFirstName.setError("First name required.");
@@ -89,7 +92,7 @@ public class Register extends AppCompatActivity implements View.OnClickListener 
                     public void onComplete(@NonNull Task<AuthResult> task) {
 
                         if (task.isSuccessful()) {
-                            User user = new User(firstName, lastName, email);
+                            User user = new User(firstName, lastName, email, Insta, WeChat);
 
                             FirebaseDatabase.getInstance().getReference("Users")
                                     .child(FirebaseAuth.getInstance().getCurrentUser().getUid())

@@ -11,12 +11,111 @@
         android:id="@+id/SignOut"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="44dp"
+        android:layout_marginTop="656dp"
         android:text="Signout"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/PageTitleAccount"
+        android:layout_width="277dp"
+        android:layout_height="63dp"
+        android:layout_marginTop="24dp"
+        android:fontFamily="@font/carrois_gothic_sc"
+        android:text="Account"
+        android:textColor="#BE4444"
+        android:textSize="62sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.11"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/AccountContactInfo"
+        android:layout_width="277dp"
+        android:layout_height="63dp"
+        android:layout_marginTop="36dp"
+        android:fontFamily="@font/carrois_gothic_sc"
+        android:text="Contact info"
+        android:textColor="#BE4444"
+        android:textSize="36sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.111"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/PageTitleAccount" />
+
+    <ImageView
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:layout_marginTop="12dp"
+        app:layout_constraintEnd_toStartOf="@+id/InstaInput"
+        app:layout_constraintHorizontal_bias="0.555"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/imageView"
+        app:srcCompat="@drawable/ic_insta" />
+
+    <EditText
+        android:id="@+id/WeChatInput"
+        android:layout_width="287dp"
+        android:layout_height="38dp"
+        android:layout_marginTop="20dp"
+        android:background="@drawable/roundstyle"
+        android:backgroundTint="#F8FAFC"
+        android:ems="10"
+        android:fontFamily="@font/montserrat"
+        android:hint=""
+        android:inputType="textShortMessage"
+        android:radius="100dp"
+        android:singleLine="true"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.62"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/InstaInput" />
+
+    <Button
+        android:id="@+id/AccountSaveButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="328dp"
+        android:text="Save"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.498"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <ImageView
+        android:id="@+id/imageView"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:layout_marginTop="16dp"
+
+        app:layout_constraintEnd_toStartOf="@+id/InstaInput"
+        app:layout_constraintHorizontal_bias="0.555"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/AccountContactInfo"
+        app:srcCompat="@drawable/ic_insta" />
+
+    <EditText
+        android:id="@+id/InstaInput"
+        android:layout_width="287dp"
+        android:layout_height="38dp"
+        android:layout_marginTop="24dp"
+        android:background="@drawable/roundstyle"
+        android:backgroundTint="#F8FAFC"
+        android:ems="10"
+        android:fontFamily="@font/montserrat"
+
+        android:inputType="textShortMessage"
+        android:radius="100dp"
+        android:singleLine="true"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.62"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/AccountContactInfo" />
+
+
 </androidx.constraintlayout.widget.ConstraintLayout>
 
 

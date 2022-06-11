@@ -37,7 +37,7 @@
     </ImageView>
 
     <Button
-        android:id="@+id/SellItemBtn"
+        android:id="@+id/contactButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentStart="true"

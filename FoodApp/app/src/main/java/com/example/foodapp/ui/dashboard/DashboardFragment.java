@@ -78,6 +78,9 @@ public class DashboardFragment extends Fragment {
         final ArrayList<String> desc2 = new ArrayList<>();
         final ArrayList<String> url1 = new ArrayList<>();
         final ArrayList<String> url2 = new ArrayList<>();
+        final ArrayList<String> seller1 = new ArrayList<>();
+        final ArrayList<String> seller2 = new ArrayList<>();
+
         final FirebaseDatabase database = FirebaseDatabase.getInstance();
         DatabaseReference reference = database.getReference("server/saving-data/fireblog/SellItems");
 
@@ -85,7 +88,7 @@ public class DashboardFragment extends Fragment {
 
 
         listView = (ListView) binding.customListView;
-        CustomBaseAdapter customBaseAdapter = new CustomBaseAdapter(requireActivity().getApplicationContext(),getActivity(), titleList, titleList2, desc, desc2, url1, url2);
+        CustomBaseAdapter customBaseAdapter = new CustomBaseAdapter(requireActivity().getApplicationContext(),getActivity(), titleList, titleList2, desc, desc2, url1, url2, seller1, seller2);
 
         listView.setAdapter(customBaseAdapter);
         listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
@@ -108,12 +111,14 @@ public class DashboardFragment extends Fragment {
                         titleList.add(item.title);
                         desc.add(item.description);
                         url1.add(item.imageUrl);
+                        seller1.add(item.seller);
                         counter = counter + 1;
                     }
                     else{
                         titleList2.add(item.title);
                         desc2.add(item.description);
                         url2.add(item.imageUrl);
+                        seller2.add(item.seller);
                         counter = counter + 1;
                     }
                 }

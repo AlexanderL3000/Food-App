@@ -19,8 +19,11 @@ import com.google.android.gms.tasks.OnSuccessListener;
 import com.github.dhaval2404.imagepicker.ImagePicker;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.OnProgressListener;
 import com.google.firebase.storage.StorageReference;
@@ -193,12 +196,138 @@ public class SellActivity extends AppCompatActivity implements View.OnClickListe
 
 
         SellItem item = new SellItem(Title, Price, Quantity, Description, seller, imageUrl);
+
         DatabaseReference Ref = ref.child("SellItems");
-        DatabaseReference newRef = Ref.push();
-        newRef.setValue(item);
+        String itemID = Ref.push().getKey();
+        //Ref.child(itemID).setValue(item);
+        /*DatabaseReference newRef = Ref.push();
+        newRef.setValue(item);*/
+
+        DatabaseReference check = FirebaseDatabase.getInstance().getReference("Users").child(FirebaseAuth.getInstance().getCurrentUser().getUid());
+        String item1;
+        String item2;
+        String item3;
+
+        /*item1 = getDataValue(check.child("Item1"));
+        item2 = getDataValue(check.child("Item2"));
+        item3 = getDataValue(check.child("Item3"));
+
+        if (!item1.equals("-1")) {
+            check.child("Item1").setValue(itemID);
+        }
+        else if (!item2.equals("-1")) {
+            check.child("Item2").setValue(itemID);
+        }
+        else if (!item3.equals("-1")) {
+            check.child("Item3").setValue(itemID);
+        }
+        else {
+            Toast.makeText(SellActivity.this, "Can't have more than 3 listings", Toast.LENGTH_LONG).show();
+            return;
+        }
+
+        */
+
+        check.child("Item1").addListenerForSingleValueEvent(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot snapshot) {
+
+                String item1 = snapshot.getValue(String.class);
+                if (item1.equals("-1")) {
+                    check.child("Item1").setValue(itemID);
+                    Ref.child(itemID).setValue(item);
+                    startActivity(new Intent(SellActivity.this, MainActivity.class));
+                }
+                else {
+                    check.child("Item2").addListenerForSingleValueEvent(new ValueEventListener() {
+                        @Override
+                        public void onDataChange(@NonNull DataSnapshot snapshot) {
+
+                            String item2 = snapshot.getValue(String.class);
+                            if (item2.equals("-1")) {
+                                check.child("Item2").setValue(itemID);
+                                Ref.child(itemID).setValue(item);
+                                startActivity(new Intent(SellActivity.this, MainActivity.class));
+                            }
+                            else {
+                                check.child("Item3").addListenerForSingleValueEvent(new ValueEventListener() {
+                                    @Override
+                                    public void onDataChange(@NonNull DataSnapshot snapshot) {
+
+                                        String item3 = snapshot.getValue(String.class);
+                                        if (item3.equals("-1")) {
+                                            check.child("Item3").setValue(itemID);
+                                            Ref.child(itemID).setValue(item);
+                                            startActivity(new Intent(SellActivity.this, MainActivity.class));
+                                        }
+                                        else {
+                                            Toast.makeText(SellActivity.this, "Can't have more than 3 listings", Toast.LENGTH_LONG).show();
+
+                                        }
+
+                                    }
+
+                                    @Override
+                                    public void onCancelled(@NonNull DatabaseError error) {
+
+                                    }
+                                });
+                            }
+
+                        }
+
+                        @Override
+                        public void onCancelled(@NonNull DatabaseError error) {
+
+                        }
+                    });
+
+                }
+
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+
+            }
+        });
+
+
+
+
+
+
+
+
+
 
 
 
 
     }
+/*
+    private String getDataValue(DatabaseReference path) {
+
+        String Item;
+
+        path.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot snapshot) {
+
+                Item = snapshot.getValue(String.class);
+
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+
+
+            }
+        });
+        return Item;
+    }
+
+ */
+
+
 }

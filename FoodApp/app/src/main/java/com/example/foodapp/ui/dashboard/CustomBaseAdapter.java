@@ -1,5 +1,7 @@
 package com.example.foodapp.ui.dashboard;
 
+import static android.content.Context.CLIPBOARD_SERVICE;
+
 import android.app.Dialog;
 import android.content.Context;
 import android.graphics.Color;
@@ -13,6 +15,8 @@ import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
+import android.content.ClipboardManager;
+import android.content.ClipData;
 
 import androidx.annotation.NonNull;
 
@@ -45,6 +49,9 @@ public class CustomBaseAdapter extends BaseAdapter {
     Dialog mDialog;
     Dialog contactPopup;
     private FirebaseAuth mAuth;
+    ClipboardManager myClipboard;
+    private ClipData myClip;
+
 
 
 
@@ -87,6 +94,9 @@ public class CustomBaseAdapter extends BaseAdapter {
     public View getView(int i, View view, ViewGroup viewGroup) {
         mAuth = FirebaseAuth.getInstance();
         final FirebaseDatabase database = FirebaseDatabase.getInstance();
+
+        ClipboardManager myClipboard = (ClipboardManager)
+                contextA.getSystemService(Context.CLIPBOARD_SERVICE);
 
         view = inflater.inflate(R.layout.listitem, null);
         TextView item1 = (TextView) view.findViewById(R.id.listPriceText);
@@ -168,6 +178,25 @@ public class CustomBaseAdapter extends BaseAdapter {
                             });
 
                             contactPopup.show();
+
+                            instaContact.setOnClickListener(new View.OnClickListener() {
+                                @Override
+                                public void onClick(View view) {
+                                    ClipData myClip = ClipData.newPlainText("simple text", instaContact.getText().toString());
+                                    myClipboard.setPrimaryClip(myClip);
+                                    Toast.makeText(context.getApplicationContext(), "Copied to Clipboard", Toast.LENGTH_SHORT).show();
+
+                                }
+                            });
+
+                            WeChatContact.setOnClickListener(new View.OnClickListener() {
+                                @Override
+                                public void onClick(View view) {
+                                    ClipData myClip = ClipData.newPlainText("simple text", WeChatContact.getText().toString());
+                                    myClipboard.setPrimaryClip(myClip);
+                                    Toast.makeText(context.getApplicationContext(), "Copied to Clipboard", Toast.LENGTH_SHORT).show();
+                                }
+                            });
                         }
 
                     });
@@ -244,6 +273,25 @@ public class CustomBaseAdapter extends BaseAdapter {
                                 @Override
                                 public void onCancelled(@NonNull DatabaseError error) {
 
+                                }
+                            });
+                            instaContact.setOnClickListener(new View.OnClickListener() {
+                                @Override
+                                public void onClick(View view) {
+                                    ClipData myClip = ClipData.newPlainText("simple text", instaContact.getText().toString());
+                                    myClipboard.setPrimaryClip(myClip);
+                                    Toast.makeText(context.getApplicationContext(), "Copied to Clipboard", Toast.LENGTH_SHORT).show();
+
+
+                                }
+                            });
+
+                            WeChatContact.setOnClickListener(new View.OnClickListener() {
+                                @Override
+                                public void onClick(View view) {
+                                    ClipData myClip = ClipData.newPlainText("simple text", WeChatContact.getText().toString());
+                                    myClipboard.setPrimaryClip(myClip);
+                                    Toast.makeText(context.getApplicationContext(), "Copied to Clipboard", Toast.LENGTH_SHORT).show();
                                 }
                             });
                             contactPopup.show();

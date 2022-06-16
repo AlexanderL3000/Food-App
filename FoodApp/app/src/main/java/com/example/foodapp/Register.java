@@ -3,6 +3,7 @@ package com.example.foodapp;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.util.Patterns;
 import android.view.View;
@@ -10,10 +11,13 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
+import com.example.foodapp.ui.dashboard.DashboardFragment;
 import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.FirebaseDatabase;
 
 public class Register extends AppCompatActivity implements View.OnClickListener {
@@ -102,6 +106,20 @@ public class Register extends AppCompatActivity implements View.OnClickListener 
 
                                     if (task.isSuccessful()) {
                                         Toast.makeText(Register.this, "User has been registered.", Toast.LENGTH_LONG).show();
+                                        FirebaseUser fuser = mAuth.getCurrentUser();
+                                        FirebaseDatabase.getInstance().getReference("Users").child(FirebaseAuth.getInstance().getCurrentUser().getUid()).child("Item1").setValue("-1");
+                                        FirebaseDatabase.getInstance().getReference("Users").child(FirebaseAuth.getInstance().getCurrentUser().getUid()).child("Item2").setValue("-1");
+                                        FirebaseDatabase.getInstance().getReference("Users").child(FirebaseAuth.getInstance().getCurrentUser().getUid()).child("Item3").setValue("-1");
+                                        fuser.sendEmailVerification().addOnSuccessListener(new OnSuccessListener<Void>() {
+                                            @Override
+                                            public void onSuccess(Void unused) {
+                                                Toast.makeText(Register.this, "Email Verification Sent.", Toast.LENGTH_LONG).show();
+
+                                            }
+                                        });
+
+                                        Intent intent = new Intent(Register.this, Login.class);
+                                        startActivity(intent);
 
                                     }else{
                                         Toast.makeText(Register.this, "Failed to register User", Toast.LENGTH_LONG).show();

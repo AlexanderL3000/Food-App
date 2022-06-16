@@ -24,6 +24,37 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
+        android:id="@+id/contactPopupTitle"
+        android:layout_width="236dp"
+        android:layout_height="69dp"
+        android:layout_alignParentEnd="true"
+        android:layout_marginStart="20dp"
+        android:layout_marginTop="20dp"
+        android:layout_marginEnd="101dp"
+        android:fontFamily="@font/carrois_gothic_sc"
+        android:text="Contact"
+        android:textColor="#BE4444"
+        android:textSize="30sp"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/contactText"
+        android:layout_width="236dp"
+        android:layout_height="69dp"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentBottom="true"
+        android:layout_marginStart="99dp"
+        android:layout_marginTop="20dp"
+        android:layout_marginEnd="15dp"
+        android:layout_marginBottom="-19dp"
+        android:fontFamily="@font/carrois_gothic_sc"
+        android:text="Click to copy"
+        android:textColor="#BE4444"
+        android:textSize="24sp"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
         android:id="@+id/InstaContact"
         android:layout_width="287dp"
         android:layout_height="38dp"

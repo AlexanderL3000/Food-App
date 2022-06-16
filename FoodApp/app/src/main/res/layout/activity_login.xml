@@ -63,7 +63,7 @@
         android:ems="10"
         android:fontFamily="@font/montserrat"
         android:hint="  Ex. Pasta"
-        android:inputType="textPassword"
+        android:inputType="textEmailAddress"
         android:radius="100dp"
         android:singleLine="true"
         app:layout_constraintEnd_toEndOf="parent"
